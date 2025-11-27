@@ -1,0 +1,65 @@
+{
+  "brand": {
+    "name_en": "The Inner Path Map",
+    "name_zh": "內在修行路徑圖",
+    "logo": "assets/app-icon.png",
+    "share_image": "assets/share-wide.png",
+    "share_image_square": "assets/share-square.png"
+  },
+
+  "paths": {
+    "root": "./",
+    "css": "./style.css",
+    "js": "./app.js",
+    "assets_folder": "./assets/",
+    "share_icons": "./assets/share-icons/"
+  },
+
+  "assets": {
+    "core_ui": [
+      "assets/app-icon.png",
+      "assets/share-wide.png",
+      "assets/share-square.png"
+    ],
+
+    "share_icons": {
+      "facebook": "assets/share-icons/facebook.png",
+      "instagram": "assets/share-icons/instagram.png",
+      "twitter": "assets/share-icons/twitter.png",
+      "whatsapp": "assets/share-icons/whatsapp.png",
+      "generic_share": "assets/share-icons/share.png"
+    },
+
+    "optional_ui": [
+      "assets/vidya-header.png",
+      "assets/vidya-soft.png"
+    ]
+  },
+
+  "usage": {
+    "app-icon.png": "Displayed in app header and favicon placeholder. 512x512 recommended.",
+    "share-wide.png": "OpenGraph image for Facebook, X, WhatsApp, LinkedIn.",
+    "share-square.png": "Instagram share-card template (1080x1080).",
+    
+    "facebook.png": "Share button icon for Facebook Posts (vector preferred).",
+    "instagram.png": "Share icon for IG Story/Post (vector preferred).",
+    "twitter.png": "Share icon for Twitter/X.",
+    "whatsapp.png": "WhatsApp share button icon.",
+    "share.png": "Generic share button icon."
+  },
+
+  "file_requirements": {
+    "png_format": true,
+    "transparent_background_for_icons": true,
+    "max_file_size_kb": 300,
+    "og_image_min": "1200x630",
+    "app_icon_min": "192x192"
+  },
+
+  "notes": [
+    "All assets referenced directly in HTML must be placed under /assets.",
+    "Cloudflare Pages requires correct case sensitivity for paths.",
+    "For AdSense compliance, avoid using religious imagery tied to specific sects.",
+    "Vidya character assets are optional and not tied to core functionality."
+  ]
+}
