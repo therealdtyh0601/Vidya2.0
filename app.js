@@ -109,7 +109,7 @@ const i18nText = {
 // MAIN ENGINE: SCORING + CLASSIFICATION
 // ============================================================
 
-function generateProfile() {
+function generateProfile() {document.getElementById("cta-section").style.display = "block";
     const form = document.getElementById("questionnaireForm");
 
     // Collect inputs
