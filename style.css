@@ -221,3 +221,76 @@ body {
     padding: 30px;
   }
 }
+/* ============================================================
+   CTA CARD
+   ============================================================ */
+
+.cta-card {
+  width: 92%;
+  max-width: 680px;
+  margin: 24px auto;
+  background: #ffffff;
+  padding: 22px 18px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #132029;
+}
+
+.cta-text {
+  font-size: 0.96rem;
+  margin-bottom: 16px;
+  color: #3c4851;
+  line-height: 1.5;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.25s;
+}
+
+.cta-button:hover {
+  background: #1eb056;
+}
+
+.share-row {
+  margin-top: 20px;
+}
+
+.share-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #55626d;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.share-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.2s;
+}
+
+.share-icon:hover {
+  opacity: 1;
+}
