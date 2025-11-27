@@ -1,31 +1,27 @@
 // ============================================================
-// Zen Buddhist Path Lite v2.0
-// Full Mapping Engine for:
-// - 行人類型（信行人 / 法行人）
-// - 習性（貪 / 瞋 / 痴 / 信柔 / 智觀）
-// - 五根五力
-// - 七覺支
-// - 入門修行建議（1–3）
-// - Bilingual Output
+// The Inner Path Map v2.0
+// Full Buddhist-Psychology Mapping Engine
 // ============================================================
 
-// i18n Engine ------------------------------------------------
+// ============================================================
+// i18n Text System
+// ============================================================
 
-let currentLang = "zh";
+let currentLang = "en";
 
 const i18nText = {
     zh: {
-        result_title: "禪修人格分析結果",
+        result_title: "內在修行路徑圖：分析結果",
         type_label: "行人類型",
-        habit_label: "習性傾向",
-        practice_label: "適合你的修行入門模式",
+        habit_label: "心性習性",
+        practice_label: "適合你的入門修行方式",
 
         // practitioner types
         type_faith: "信行人",
         type_dharma: "法行人",
 
-        type_faith_desc: "你以信念、安心感與願力作為修行的核心，心性柔軟，適合法門以慈悲與觀想為主。",
-        type_dharma_desc: "你以理解、觀察與洞察力推動修行，思路清晰，適合從觀呼吸、正念與止觀開始。",
+        type_faith_desc: "你以信念、願心、安心感作為修行的力量來源，適合法以慈心、光明觀或誦念為起點。",
+        type_dharma_desc: "你以理解、觀察、洞察力推動修行，適合從呼吸、正念與止觀開始。",
 
         // habits
         habit_greed: "貪行性",
@@ -34,37 +30,36 @@ const i18nText = {
         habit_faithSoft: "信柔型",
         habit_insightAnalytic: "智觀型",
 
-        habit_desc_greed: "你的心向往愉悅與舒適，適合身體覺知與呼吸法。",
-        habit_desc_aversion: "你的心容易緊繃或急躁，適合慈心禪與放鬆練習。",
-        habit_desc_delusion: "你的心容易散亂與模糊，適合循序漸進與行禪。",
-        habit_desc_faithSoft: "你感性細膩，適合光明觀與慈心法門。",
-        habit_desc_insightAnalytic: "你善於觀察與理解，適合同步練習正念與止觀。",
+        habit_desc_greed: "你的心依賴愉悅或舒適，適合身體覺知與呼吸穩定法。",
+        habit_desc_aversion: "你的心容易緊繃、反應快，適合慈心禪與放鬆法。",
+        habit_desc_delusion: "你的心較散亂或不易集中，適合行禪與循序穩定呼吸。",
+        habit_desc_faithSoft: "你心柔軟、感受力高，適合光明觀與慈心法門。",
+        habit_desc_insightAnalytic: "你善於理解與觀察，適合同步練習止觀與內觀。",
 
         // practices
         p_walk: "行禪（Walking Meditation）",
-        p_walk_desc: "以步伐帶動覺知，特別適合散亂或緊繃的心。",
-        
+        p_walk_desc: "透過步伐帶動覺知，非常適合散亂或緊繃的心。",
+
         p_breath: "安般念（觀呼吸）",
-        p_breath_desc: "建立穩定與安定力，是大多數行人的基礎法門。",
-        
+        p_breath_desc: "穩定心念、增強專注，是最廣泛適用的入門方法。",
+
         p_lovingkindness: "慈心禪（Loving-kindness）",
-        p_lovingkindness_desc: "柔軟情緒、緩和瞋心、提升幸福感。",
-        
+        p_lovingkindness_desc: "柔化情緒、減少瞋心、提升幸福感。",
+
         p_bodyscan: "身體掃描（Body Scan）",
-        p_bodyscan_desc: "減少緊繃、提升覺知，非常適合初學者。",
-        
+        p_bodyscan_desc: "放鬆身心、提升覺知，非常適合初學者。",
+
         p_light: "光明觀（Light Visualization）",
-        p_light_desc: "適合信柔型與感性行人，能快速安定心念。",
-        
-        p_shortchant: "短咒誦／念佛（Non-sectarian）",
-        p_shortchant_desc: "柔軟心、安定心，是信行人的快速入門法。",
-        
-        // final labels
-        final_label: "你的入門修行建議：",
+        p_light_desc: "提升安心感與清明度，適合信柔型與感性行人。",
+
+        p_shortchant: "短咒誦／念佛（非宗派）",
+        p_shortchant_desc: "穩定情緒、安定心念，是信行人的快速入門法。",
+
+        final_label: "你的入門修行建議："
     },
 
     en: {
-        result_title: "Meditation Personality Profile",
+        result_title: "The Inner Path Map · Results",
         type_label: "Practitioner Type",
         habit_label: "Disposition Pattern",
         practice_label: "Recommended Entry Practices",
@@ -72,8 +67,8 @@ const i18nText = {
         type_faith: "Faith-Inclined Practitioner",
         type_dharma: "Dharma-Inclined Practitioner",
 
-        type_faith_desc: "You rely on trust, emotional openness, and intention to enter practice. Compassion- and visualization-based methods suit you well.",
-        type_dharma_desc: "You progress through understanding, clarity, and insight. Breath awareness and mindfulness practices are ideal.",
+        type_faith_desc: "You enter practice through trust, emotional openness, and intention. Methods like loving-kindness, light visualization, or chanting suit you well.",
+        type_dharma_desc: "You progress through understanding, clarity, and observation. Breath meditation, mindfulness, and insight practices are ideal.",
 
         habit_greed: "Greed-Type",
         habit_aversion: "Aversion-Type",
@@ -83,7 +78,7 @@ const i18nText = {
 
         habit_desc_greed: "You seek comfort and pleasant states. Body awareness and breath grounding help balance the mind.",
         habit_desc_aversion: "You react quickly or hold tension. Loving-kindness and relaxation practices support you.",
-        habit_desc_delusion: "Your attention scatters easily. Walking meditation and steady breathing keep you grounded.",
+        habit_desc_delusion: "Your attention scatters easily. Walking meditation and stable breathing keep you grounded.",
         habit_desc_faithSoft: "You are intuitive and sensitive. Light visualization and compassion practices suit you.",
         habit_desc_insightAnalytic: "You analyze well and observe patterns. Insight and mindfulness practices match your mind.",
 
@@ -94,37 +89,37 @@ const i18nText = {
         p_breath_desc: "A foundational practice for stability, clarity, and grounding.",
 
         p_lovingkindness: "Loving-kindness Meditation",
-        p_lovingkindness_desc: "Softens emotional reactivity and cultivates warmth.",
+        p_lovingkindness_desc: "Softens emotional reactivity and cultivates warm presence.",
 
         p_bodyscan: "Body Scan",
         p_bodyscan_desc: "Reduces tension and increases embodied awareness.",
 
         p_light: "Light Visualization",
-        p_light_desc: "Ideal for intuitive practitioners; quickly stabilizes and uplifts the mind.",
+        p_light_desc: "Ideal for intuitive practitioners; quickly stabilizes and uplifts.",
 
-        p_shortchant: "Short Chants / Non-sectarian recitation",
+        p_shortchant: "Short Chant / Non-sectarian Recitation",
         p_shortchant_desc: "Useful for quick emotional grounding and softening.",
-        
-        final_label: "Recommended practices:",
+
+        final_label: "Suggested entry practices:"
     }
 };
 
 
 // ============================================================
-// Mapping Engine — Main Entry Function
+// MAIN ENGINE: SCORING + CLASSIFICATION
 // ============================================================
 
 function generateProfile() {
     const form = document.getElementById("questionnaireForm");
 
+    // Collect inputs
     const Q = {};
     for (let i = 1; i <= 10; i++) {
-        Q[i] = parseInt(form[`Q${i}`].value || "3"); // default midpoint
+        Q[i] = parseInt(form[`Q${i}`].value || "3");
     }
-    const Bonus = parseInt(form["Q11"]?.value || "3");
 
     // --------------------------------------------------------
-    // 1. 行人類型計算
+    // 1. Practitioner Type (信行人 / 法行人)
     // --------------------------------------------------------
     const faithScore = Q[4] + (Q[1] * 0.5) + (Q[10] * 0.5);
     const dharmaScore = Q[3] + (Q[2] * 0.5) + (Q[5] * 0.3);
@@ -133,7 +128,7 @@ function generateProfile() {
         faithScore > dharmaScore ? "faith" : "dharma";
 
     // --------------------------------------------------------
-    // 2. 習性計算（五類取前二）
+    // 2. Disposition Types (Top 2)
     // --------------------------------------------------------
 
     const dispositions = {
@@ -150,60 +145,55 @@ function generateProfile() {
         .map(([k]) => k);
 
     // --------------------------------------------------------
-    // 3. 入門修行建議 Algorithm
+    // 3. Practice Recommendation Logic
     // --------------------------------------------------------
 
-    const recommendations = [];
+    const baseRecs = [];
 
-    // Layer 1: Practitioner type
     if (practitionerType === "faith") {
-        recommendations.push("p_lovingkindness");
-        recommendations.push("p_light");
+        baseRecs.push("p_lovingkindness", "p_light", "p_shortchant");
     } else {
-        recommendations.push("p_breath");
-        recommendations.push("p_walk");
+        baseRecs.push("p_breath", "p_walk");
     }
 
-    // Layer 2: Habit-based
     if (sortedHabits.includes("aversion"))
-        recommendations.push("p_lovingkindness");
-
-    if (sortedHabits.includes("delusion"))
-        recommendations.push("p_walk");
+        baseRecs.push("p_lovingkindness");
 
     if (sortedHabits.includes("greed"))
-        recommendations.push("p_bodyscan");
+        baseRecs.push("p_bodyscan");
+
+    if (sortedHabits.includes("delusion"))
+        baseRecs.push("p_walk");
 
     if (sortedHabits.includes("insightAnalytic"))
-        recommendations.push("p_breath");
+        baseRecs.push("p_breath");
 
     if (sortedHabits.includes("faithSoft"))
-        recommendations.push("p_light");
+        baseRecs.push("p_light");
 
-    // Deduplicate
-    const finalRecs = [...new Set(recommendations)].slice(0, 3);
+    const finalRecs = [...new Set(baseRecs)].slice(0, 3);
 
-    // --------------------------------------------------------
-    // Render output
-    // --------------------------------------------------------
+    // ============================================================
+    // RENDER RESULT
+    // ============================================================
 
     const t = i18nText[currentLang];
 
     const output = `
-        <h2>${t.result_title}</h2>
+      <h2>${t.result_title}</h2>
 
-        <h3>${t.type_label}</h3>
-        <p><strong>${t["type_" + practitionerType]}</strong></p>
-        <p>${t["type_" + practitionerType + "_desc"]}</p>
+      <h3>${t.type_label}</h3>
+      <p><strong>${t["type_" + practitionerType]}</strong></p>
+      <p>${t["type_" + practitionerType + "_desc"]}</p>
 
-        <h3>${t.habit_label}</h3>
-        <p><strong>${sortedHabits.map(h => t["habit_" + h]).join(" ＋ ")}</strong></p>
-        <p>${sortedHabits.map(h => t["habit_desc_" + h]).join(" ")}</p>
+      <h3>${t.habit_label}</h3>
+      <p><strong>${sortedHabits.map(h => t["habit_" + h]).join(" ＋ ")}</strong></p>
+      <p>${sortedHabits.map(h => t["habit_desc_" + h]).join(" ")}</p>
 
-        <h3>${t.practice_label}</h3>
-        ${finalRecs.map(key => `
-            <p><strong>${t[key]}</strong><br>${t[key + "_desc"]}</p>
-        `).join("")}
+      <h3>${t.practice_label}</h3>
+      ${finalRecs.map(key => `
+        <p><strong>${t[key]}</strong><br>${t[key + "_desc"]}</p>
+      `).join("")}
     `;
 
     document.getElementById("result").innerHTML = output;
@@ -211,14 +201,27 @@ function generateProfile() {
 
 
 // ============================================================
-// Language Switcher
+// LANGUAGE SWITCHER
 // ============================================================
 
 function switchLang(lang) {
     currentLang = lang;
-    document.body.setAttribute("data-lang", lang);
-    const result = document.getElementById("result");
-    if (result.innerHTML.trim().length > 0) {
+
+    // Update all visible labels
+    document.querySelectorAll(".q-label").forEach(el => {
+        el.innerHTML = el.getAttribute(`data-lang-${lang}`);
+    });
+
+    document.querySelector(".section-title").innerHTML =
+        document.querySelector(".section-title").getAttribute(`data-lang-${lang}`);
+
+    // Update button text
+    document.querySelectorAll("[data-lang-en]").forEach(el => {
+        el.innerHTML = el.getAttribute(`data-lang-${lang}`);
+    });
+
+    // Re-render result if exists
+    if (document.getElementById("result").innerHTML.trim() !== "") {
         generateProfile();
     }
 }
