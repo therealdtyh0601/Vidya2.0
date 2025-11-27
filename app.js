@@ -206,7 +206,12 @@ function generateProfile() {
 
 function switchLang(lang) {
     currentLang = lang;
-
+    // CTA localisation
+    document.querySelectorAll("[data-lang-en]").forEach(el => {
+        if (el.getAttribute(`data-lang-${lang}`)) {
+            el.innerHTML = el.getAttribute(`data-lang-${lang}`);
+        }
+    });
     // Update all visible labels
     document.querySelectorAll(".q-label").forEach(el => {
         el.innerHTML = el.getAttribute(`data-lang-${lang}`);
@@ -223,5 +228,26 @@ function switchLang(lang) {
     // Re-render result if exists
     if (document.getElementById("result").innerHTML.trim() !== "") {
         generateProfile();
+        // Show CTA after results are generated
+document.getElementById("cta-section").style.display = "block";
+    }
+}
+function shareTo(platform) {
+    const url = encodeURIComponent(window.location.href);
+
+    if (platform === "fb") {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
+    }
+
+    if (platform === "ig") {
+        alert("Instagram does not allow direct URL share. Screenshot the result card to share on IG.");
+    }
+
+    if (platform === "twitter") {
+        window.open(`https://twitter.com/intent/tweet?url=${url}`, "_blank");
+    }
+
+    if (platform === "wa") {
+        window.open(`https://wa.me/?text=${url}`, "_blank");
     }
 }
