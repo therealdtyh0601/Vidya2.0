@@ -1,0 +1,223 @@
+/* ============================================================
+   GLOBAL RESET + BASE STYLES
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+}
+
+body {
+  background: #f4f6f7;
+  color: #1d2934;
+  padding-bottom: 60px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   HEADER BRANDING
+   ============================================================ */
+
+.app-header {
+  text-align: center;
+  padding: 26px 10px 10px;
+}
+
+.app-logo {
+  width: 70px;
+  height: 70px;
+  opacity: 0.95;
+  margin-bottom: 10px;
+}
+
+.app-title {
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #132029;
+}
+
+.app-title-zh {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #54636f;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   LANGUAGE TOGGLE
+   ============================================================ */
+
+.lang-toggle {
+  margin-top: 14px;
+}
+
+.lang-btn {
+  padding: 6px 14px;
+  margin: 0 4px;
+  font-size: 0.85rem;
+  color: #1d2934;
+  background: #e2e8ec;
+  border: 1px solid #d1d9df;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.lang-btn:hover {
+  background: #d9e0e4;
+}
+
+/* ============================================================
+   CONTENT SECTION
+   ============================================================ */
+
+.content {
+  width: 92%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #132029;
+}
+
+/* ============================================================
+   QUESTIONNAIRE BLOCKS
+   ============================================================ */
+
+.questionnaire {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.q-block {
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.q-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #394750;
+  line-height: 1.45;
+}
+
+.q-select {
+  width: 100%;
+  padding: 8px 12px;
+  background: #f3f7f8;
+  border-radius: 8px;
+  border: 1px solid #cfd9e1;
+  font-size: 1rem;
+  color: #1d2934;
+}
+
+/* ============================================================
+   SUBMIT BUTTON
+   ============================================================ */
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #233645;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.submit-btn:hover {
+  background: #1a2732;
+}
+
+/* ============================================================
+   RESULT CARD
+   ============================================================ */
+
+.result-card {
+  width: 92%;
+  max-width: 680px;
+  margin: 28px auto;
+  background: #ffffff;
+  padding: 24px 20px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+}
+
+.result-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+  color: #132029;
+}
+
+.result-card h3 {
+  font-size: 1.15rem;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  color: #20303d;
+}
+
+.result-card p {
+  margin-bottom: 10px;
+  color: #3c4751;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   ADS
+   ============================================================ */
+
+.ad-container {
+  margin: 20px auto;
+  width: 92%;
+  max-width: 680px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 30px;
+  color: #6f7a81;
+  font-size: 0.85rem;
+}
+
+.footer-small {
+  font-size: 0.75rem;
+  margin-top: 8px;
+  color: #738087;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   RESPONSIVENESS
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .app-title {
+    font-size: 2.2rem;
+  }
+  .content {
+    width: 80%;
+  }
+  .result-card {
+    padding: 30px;
+  }
+}
