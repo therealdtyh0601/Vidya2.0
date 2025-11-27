@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Inner Path Map | 內在修行路徑圖</title>
+
+  <meta name="description" content="A Buddhist-psychology meditation profile that identifies your practitioner type, disposition pattern, and optimal entry practices. 基於佛法心理學的禪修人格測試，協助你找到行人類型、心性習性與入門修行方式。" />
+  <meta name="keywords" content="meditation test, mindfulness, buddhist psychology,五根,七覺支,禪修人格,信行人,法行人" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Inner Path Map | 內在修行路徑圖" />
+  <meta property="og:description" content="A Buddhist-psychology tool that shows your meditation personality and your best pathways into practice." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/share-wide.png" />
+  <meta property="og:url" content="https://yourdomain.pages.dev/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Inner Path Map | 內在修行路徑圖" />
+  <meta name="twitter:description" content="Discover your meditation personality and ideal practices." />
+  <meta name="twitter:image" content="./assets/share-wide.png" />
+
+  <link rel="icon" href="./assets/app-icon.png" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9188806824600550" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <img src="./assets/app-icon.png" class="app-logo" alt="Inner Path Map Logo" />
+    <h1 class="app-title">The Inner Path Map</h1>
+    <h2 class="app-title-zh">內在修行路徑圖</h2>
+
+    <!-- Language Switch -->
+    <div class="lang-toggle">
+      <button onclick="switchLang('en')" class="lang-btn">EN</button>
+      <button onclick="switchLang('zh')" class="lang-btn">中文</button>
+    </div>
+  </header>
+
+  <!-- AdSense Unit -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9188806824600550"
+         data-ad-slot="7257289001"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- Questionnaire -->
+  <section class="content">
+
+    <h3 class="section-title" data-lang-en="Meditation Personality Assessment"
+                                 data-lang-zh="禪修人格測驗">
+      Meditation Personality Assessment
+    </h3>
+
+    <form id="questionnaireForm" class="questionnaire">
+
+      <!-- 10 Questions -->
+      <!-- Each Q is dropdown 1–5 -->
+      <!-- Bilingual text managed by JS -->
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="1. Awareness of body, breath, emotions."
+                                data-lang-zh="1. 我能覺察呼吸、身體與情緒的變化。"></label>
+        <select name="Q1" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="2. Ability to stay focused without distraction."
+                                data-lang-zh="2. 我能在專注時不容易分心。"></label>
+        <select name="Q2" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="3. I like observing my thoughts to understand them."
+                                data-lang-zh="3. 我喜歡觀察並理解自己的想法。"></label>
+        <select name="Q3" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="4. I rely on trust, intention, or goodwill."
+                                data-lang-zh="4. 我遇到困難時會依靠善心或信念。"></label>
+        <select name="Q4" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="5. I naturally have motivation and energy."
+                                data-lang-zh="5. 我通常很有動力去做重要的事。"></label>
+        <select name="Q5" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="6. I can easily relax body and mind."
+                                data-lang-zh="6. 我能很快放鬆身心。"></label>
+        <select name="Q6" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="7. I seek comfort or pleasant states."
+                                data-lang-zh="7. 我容易依賴愉悅與舒適感。"></label>
+        <select name="Q7" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4"></option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="8. I react quickly to stress or criticism."
+                                data-lang-zh="8. 我對壓力與批評反應快。"></label>
+        <select name="Q8" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4"></option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="9. I get distracted or feel foggy easily."
+                                data-lang-zh="9. 我容易分心或腦袋模糊。"></label>
+        <select name="Q9" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4"></option><option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label" data-lang-en="10. I naturally feel a gentle happiness when quiet."
+                                data-lang-zh="10. 安靜時我會自然生起愉悅。"></label>
+        <select name="Q10" class="q-select">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4"></option><option value="5">5</option>
+        </select>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="generateProfile()">
+        <span data-lang-en="View Results" data-lang-zh="查看結果">View Results</span>
+      </button>
+    </form>
+  </section>
+
+  <!-- Result -->
+  <section id="result" class="result-card"></section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 The Inner Path Map. All rights reserved.</p>
+    <p class="footer-small">
+      This tool is based on Buddhist psychology and is intended for general meditation guidance.  
+      此工具屬佛法心理學模型，僅提供一般禪修方向建議。
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
