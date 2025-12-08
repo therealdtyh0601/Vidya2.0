@@ -14,7 +14,7 @@
   <meta property="og:description" content="A Buddhist-psychology tool that shows your meditation personality and your best pathways into practice." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./assets/share-wide.png" />
-  <meta property="og:url" content="https://yourdomain.pages.dev/" />
+  <meta property="og:url" content="https://therealdtyh0601.github.io/Vidya2.0/" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -77,224 +77,177 @@
     </script>
   </div>
 
-  <!-- Questionnaire -->
-  <section class="content">
-    <h3 class="section-title"
-        data-lang-en="Meditation Personality Assessment"
-        data-lang-zh="禪修人格測驗">
-      Meditation Personality Assessment
-    </h3>
+  <main class="content">
 
-    <form id="questionnaireForm" class="questionnaire" novalidate>
-      <!-- Q1 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q1"
-               data-lang-en="1. I can notice changes in my breath, body, and emotions."
-               data-lang-zh="1. 我能覺察呼吸、身體與情緒的變化。">
-        </label>
-        <select id="Q1" name="Q1" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
+    <!-- SCREEN: WELCOME -->
+    <section id="screen-welcome" class="screen screen-active">
+      <div class="welcome-card">
+        <h3 class="section-title"
+            data-lang-en="Find your meditation personality in 30 seconds."
+            data-lang-zh="用 30 秒找到適合你的禪修路徑。">
+          Find your meditation personality in 30 seconds.
+        </h3>
+
+        <p class="welcome-text"
+           data-lang-en="Answer 10 short questions to see your practitioner type, mind pattern, and suggested practices."
+           data-lang-zh="回答 10 個簡短問題，看看你的行人類型、心性習性與適合的入門修行方式。">
+          Answer 10 short questions to see your practitioner type, mind pattern, and suggested practices.
+        </p>
+
+        <button type="button"
+                class="primary-btn"
+                onclick="startAssessment()">
+          <span data-lang-en="Begin"
+                data-lang-zh="開始測驗">Begin</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN: QUESTIONNAIRE -->
+    <section id="screen-questions" class="screen">
+      <div class="question-card">
+        <div class="progress-row">
+          <div class="progress-label"
+               id="progress-label"
+               data-lang-en="Question 1 of 10"
+               data-lang-zh="第 1 題／共 10 題">
+            Question 1 of 10
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="question-text" id="question-text">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="answer-row" id="answer-row">
+          <!-- Answer buttons rendered by JS -->
+        </div>
+
+        <div class="nav-row">
+          <button type="button"
+                  class="secondary-btn"
+                  onclick="goToPreviousQuestion()"
+                  id="btn-prev">
+            <span data-lang-en="Back"
+                  data-lang-zh="上一題">Back</span>
+          </button>
+
+          <button type="button"
+                  class="primary-btn"
+                  onclick="goToNextQuestion()"
+                  id="btn-next">
+            <span data-lang-en="Next"
+                  data-lang-zh="下一題">Next</span>
+          </button>
+        </div>
+
+        <button type="button"
+                class="link-btn"
+                onclick="resetAssessment()">
+          <span data-lang-en="Start over"
+                data-lang-zh="重新開始">Start over</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN: LOADING -->
+    <section id="screen-loading" class="screen">
+      <div class="loading-card">
+        <div class="loading-orbit"></div>
+        <p class="loading-text"
+           data-lang-en="Mapping your inner tendencies..."
+           data-lang-zh="正在分析你的內在傾向...">
+          Mapping your inner tendencies...
+        </p>
+        <p class="loading-subtext"
+           data-lang-en="Balancing practitioner type, disposition, and practice pathways."
+           data-lang-zh="綜合行人類型、心性習性與修行方式中...">
+          Balancing practitioner type, disposition, and practice pathways.
+        </p>
+      </div>
+    </section>
+
+    <!-- SCREEN: RESULT -->
+    <section id="screen-result" class="screen">
+      <div class="result-card" id="result">
+        <!-- Populated by JS -->
       </div>
 
-      <!-- Q2 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q2"
-               data-lang-en="2. I can stay focused without getting distracted easily."
-               data-lang-zh="2. 我能在專注時不容易分心。">
-        </label>
-        <select id="Q2" name="Q2" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
+      <div class="cta-card">
+        <h3 class="cta-title"
+            data-lang-en="Need deeper guidance?"
+            data-lang-zh="想要更深入的建議？">
+          Need deeper guidance?
+        </h3>
+
+        <p class="cta-text"
+           data-lang-en="Chat with Lumi for a more detailed, personalized meditation recommendation."
+           data-lang-zh="聯繫 Lumi，獲得更全面、更個人的修行建議。">
+          Chat with Lumi for a more detailed, personalized meditation recommendation.
+        </p>
+
+        <a href="https://wa.me/60146205893"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="cta-button"
+           data-lang-en="Message Lumi on WhatsApp"
+           data-lang-zh="WhatsApp 聯繫 Lumi">
+          Message Lumi on WhatsApp
+        </a>
+
+        <div class="share-row">
+          <span class="share-label"
+                data-lang-en="Share your result:"
+                data-lang-zh="分享你的結果：">
+            Share your result:
+          </span>
+          <div class="share-buttons">
+            <img src="./assets/share-icons/facebook.png"
+                 class="share-icon"
+                 alt="Share on Facebook"
+                 onclick="shareTo('fb')" />
+            <img src="./assets/share-icons/instagram.png"
+                 class="share-icon"
+                 alt="Share on Instagram"
+                 onclick="shareTo('ig')" />
+            <img src="./assets/share-icons/twitter.png"
+                 class="share-icon"
+                 alt="Share on Twitter/X"
+                 onclick="shareTo('twitter')" />
+            <img src="./assets/share-icons/whatsapp.png"
+                 class="share-icon"
+                 alt="Share on WhatsApp"
+                 onclick="shareTo('wa')" />
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button type="button"
+                  class="secondary-btn"
+                  onclick="resetAssessment()">
+            <span data-lang-en="Retake assessment"
+                  data-lang-zh="重新測驗">Retake assessment</span>
+          </button>
+          <button type="button"
+                  class="link-btn"
+                  onclick="goHome()">
+            <span data-lang-en="Back to home"
+                  data-lang-zh="回到首頁">Back to home</span>
+          </button>
+        </div>
       </div>
+    </section>
 
-      <!-- Q3 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q3"
-               data-lang-en="3. I like observing my thoughts to understand them better."
-               data-lang-zh="3. 我喜歡觀察並理解自己的想法。">
-        </label>
-        <select id="Q3" name="Q3" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <!-- Q4 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q4"
-               data-lang-en="4. In difficult times, I rely on trust, intention, or goodwill."
-               data-lang-zh="4. 我遇到困難時會依靠善心或信念。">
-        </label>
-        <select id="Q4" name="Q4" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <!-- Q5 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q5"
-               data-lang-en="5. I normally have motivation and energy for important things."
-               data-lang-zh="5. 我通常很有動力去做重要的事。">
-        </label>
-        <select id="Q5" name="Q5" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <!-- Q6 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q6"
-               data-lang-en="6. I can relax my body and mind quite easily."
-               data-lang-zh="6. 我能很快放鬆身心。">
-        </label>
-        <select id="Q6" name="Q6" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <!-- Q7 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q7"
-               data-lang-en="7. I tend to seek comfort or pleasant states."
-               data-lang-zh="7. 我容易依賴愉悅與舒適感。">
-        </label>
-        <select id="Q7" name="Q7" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <!-- Q8 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q8"
-               data-lang-en="8. I react quickly to stress or criticism."
-               data-lang-zh="8. 我對壓力與批評反應快。">
-        </label>
-        <select id="Q8" name="Q8" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <!-- Q9 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q9"
-               data-lang-en="9. I get distracted or feel mentally foggy easily."
-               data-lang-zh="9. 我容易分心或腦袋模糊。">
-        </label>
-        <select id="Q9" name="Q9" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <!-- Q10 -->
-      <div class="q-block">
-        <label class="q-label"
-               for="Q10"
-               data-lang-en="10. When it's quiet, I naturally feel a gentle happiness."
-               data-lang-zh="10. 安靜時我會自然生起愉悅。">
-        </label>
-        <select id="Q10" name="Q10" class="q-select">
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3" selected>3</option>
-          <option value="4">4</option><option value="5">5</option>
-        </select>
-      </div>
-
-      <button type="button" class="submit-btn" onclick="generateProfile()">
-        <span data-lang-en="View Results" data-lang-zh="查看結果">View Results</span>
-      </button>
-
-      <button type="button" class="reset-btn" onclick="resetFormAndResult()">
-        <span data-lang-en="Reset" data-lang-zh="重新開始">Reset</span>
-      </button>
-    </form>
-  </section>
-
-  <!-- Result -->
-  <section id="result" class="result-card" aria-live="polite"></section>
-
-  <!-- CTA -->
-  <section id="cta-section" class="cta-card" style="display:none;">
-    <h3 class="cta-title"
-        data-lang-en="Need Deeper Guidance?"
-        data-lang-zh="需要更深入的建議嗎？">
-      Need Deeper Guidance?
-    </h3>
-
-    <p class="cta-text"
-       data-lang-en="Chat with Lumi for a more detailed, personalized meditation recommendation."
-       data-lang-zh="聯繫 Lumi，獲得更全面、更個人的修行建議。">
-      Chat with Lumi for a more detailed, personalized meditation recommendation.
-    </p>
-
-    <a href="https://wa.me/60146205893"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="cta-button"
-       data-lang-en="Message Lumi on WhatsApp"
-       data-lang-zh="WhatsApp 聯繫 Lumi">
-      Message Lumi on WhatsApp
-    </a>
-
-    <div class="share-row">
-      <span class="share-label"
-            data-lang-en="Share your result:"
-            data-lang-zh="分享你的結果：">
-        Share your result:
-      </span>
-
-      <div class="share-buttons">
-        <img src="./assets/share-icons/facebook.png"
-             class="share-icon"
-             alt="Share on Facebook"
-             onclick="shareTo('fb')" />
-        <img src="./assets/share-icons/instagram.png"
-             class="share-icon"
-             alt="Share on Instagram"
-             onclick="shareTo('ig')" />
-        <img src="./assets/share-icons/twitter.png"
-             class="share-icon"
-             alt="Share on Twitter/X"
-             onclick="shareTo('twitter')" />
-        <img src="./assets/share-icons/whatsapp.png"
-             class="share-icon"
-             alt="Share on WhatsApp"
-             onclick="shareTo('wa')" />
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
     <p>© 2025 The Inner Path Map. All rights reserved.</p>
     <p class="footer-small">
-      This tool is based on Buddhist psychology and is intended for general meditation guidance.  
+      This tool is based on Buddhist psychology and is intended for general meditation guidance.
       此工具屬佛法心理學模型，僅提供一般禪修方向建議。
     </p>
   </footer>
