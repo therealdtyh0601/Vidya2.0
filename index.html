@@ -3,241 +3,255 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="The Inner Path Map – 修行路徑測評" />
-  <meta property="og:description" content="Based on classical Buddhist psychology (五行性 + 五根 + 信行 / 法行) to help you understand your inner disposition." />
-  <meta property="og:image" content="./assets/share-icons/share-wide.png" />
+
+  <title>The Inner Path Map | 內在修行路徑圖</title>
+
+  <meta name="description" content="A Buddhist-psychology meditation profile that identifies your practitioner type, disposition pattern, and optimal entry practices. 基於佛法心理學的禪修人格測試，協助你找到行人類型、心性習性與入門修行方式。" />
+  <meta name="keywords" content="meditation test, mindfulness, buddhist psychology,五根,七覺支,禪修人格,信行人,法行人" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Inner Path Map | 內在修行路徑圖" />
+  <meta property="og:description" content="A Buddhist-psychology tool that shows your meditation personality and your best pathways into practice." />
   <meta property="og:type" content="website" />
-  <title>The Inner Path Map｜內在修行路徑圖</title>
+  <meta property="og:image" content="./assets/share-wide.png" />
+  <meta property="og:url" content="https://therealdtyh0601.github.io/Vidya2.0/" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Inner Path Map | 內在修行路徑圖" />
+  <meta name="twitter:description" content="Discover your meditation personality and ideal practices." />
+  <meta name="twitter:image" content="./assets/share-wide.png" />
+
+  <link rel="icon" href="./assets/app-icon.png" />
+
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9188806824600550" crossorigin="anonymous"></script>
 </head>
 
 <body>
+  <!-- HEADER -->
+  <header class="app-header">
+    <img src="./assets/app-icon.png" class="app-logo" alt="Inner Path Map Logo" />
 
-<!-- ============================================================
-     SCREEN 1 — Language Selection
-============================================================ -->
-<div id="language-screen" class="screen screen-active">
-  <h1 class="app-title">
-    The Inner Path Map<br>
-    <span class="subtitle">內在修行路徑圖</span>
-  </h1>
+    <h1 class="app-title"
+        data-lang-en="The Inner Path Map"
+        data-lang-zh="內在修行路徑圖">
+      The Inner Path Map
+    </h1>
 
-  <p class="intro-text" data-lang-en="Choose your language" data-lang-zh="選擇語言">
-    Choose your language
-  </p>
+    <h2 class="app-title-zh"
+        data-lang-en="Meditation Personality Profiler"
+        data-lang-zh="禪修人格測驗工具">
+      Meditation Personality Profiler
+    </h2>
 
-  <div class="language-options">
-    <button class="lang-btn" onclick="selectLanguage('en')">English</button>
-    <button class="lang-btn" onclick="selectLanguage('zh')">中文</button>
-  </div>
-</div>
-
-<!-- ============================================================
-     SCREEN 2 — User Info
-============================================================ -->
-<div id="info-screen" class="screen">
-  <h2 data-lang-en="Before We Begin" data-lang-zh="在開始之前">Before We Begin</h2>
-
-  <p class="info-desc"
-     data-lang-en="Please enter your name and today's date. This will appear on the final reflection card."
-     data-lang-zh="請輸入姓名與日期，將會顯示在最終的修行反思卡上。">
-     Please enter your name and today's date. This will appear on the final reflection card.
-  </p>
-
-  <div class="input-group">
-    <label data-lang-en="Your Name" data-lang-zh="你的名字">Your Name</label>
-    <input id="userName" type="text" placeholder="Your Name" />
-  </div>
-
-  <div class="input-group">
-    <label data-lang-en="Date" data-lang-zh="日期">Date</label>
-    <input id="userDate" type="date" />
-  </div>
-
-  <button class="primary-btn" onclick="goToQuestions()"
-          data-lang-en="Start" data-lang-zh="開始">
-    Start
-  </button>
-</div>
-
-<!-- ============================================================
-     SCREEN 3 — Questions
-============================================================ -->
-<div id="question-screen" class="screen">
-  <h2 id="questionText">Question</h2>
-
-  <!-- IMPORTANT: FIXED ID to match app.js -->
-  <div id="optionsContainer" class="answer-options"></div>
-
-  <div class="question-nav">
-    <button class="back-btn" onclick="prevQuestion()" data-lang-en="Back" data-lang-zh="上一題">Back</button>
-    <button class="next-btn" onclick="nextQuestion()" data-lang-en="Next" data-lang-zh="下一題">Next</button>
-  </div>
-</div>
-
-<!-- ============================================================
-     SCREEN 4 — Result
-============================================================ -->
-<div id="result-screen" class="screen">
-  <h2 data-lang-en="Your Inner Path Result" data-lang-zh="你的內在修行結構結果">
-    Your Inner Path Result
-  </h2>
-
-  <div id="resultCard" class="result-card"></div>
-
-  <div class="result-actions">
-    <button id="learnMoreBtn" class="action-btn learn-btn"
-      data-lang-en="Learn More" data-lang-zh="深入了解">
-      Learn More
-    </button>
-
-    <button id="shareBtn" class="action-btn share-btn"
-      data-lang-en="Share Result" data-lang-zh="分享結果">
-      分享結果
-    </button>
-
-    <button class="action-btn restart-btn" onclick="restartAssessment()"
-      data-lang-en="Restart" data-lang-zh="重新測驗">
-      Restart
-    </button>
-  </div>
-</div>
-
-<!-- ============================================================
-     SCREEN 5 — Learn More + Sutta Accordion
-============================================================ -->
-<div id="learn-faculties" class="screen learn-screen">
-
-  <h2 data-lang-en="Learn More" data-lang-zh="深入了解">Learn More</h2>
-
-  <p class="learn-desc"
-     data-lang-en="Explore how Buddhist psychology describes five dispositions, the five faculties, and the two great practice orientations."
-     data-lang-zh="了解佛教心理學中對五行性、五根、以及信行人 / 法行人的描述。">
-  </p>
-
-  <!-- ======================================================
-       FINAL ACCORDION BLOCK (Corrected)
-  ======================================================= -->
-
-  <div id="suttaAccordion" class="accordion-group">
-
-    <!-- 1 -->
-    <div class="accordion-item">
-      <div class="accordion-header">
-        <span data-lang-en="Greed-Type Disposition (Rāga)" data-lang-zh="貪行性（Rāga）">貪行性（Rāga）</span>
-        <span class="accordion-arrow">⌄</span>
-      </div>
-      <div class="accordion-content">
-        <p class="sutta-label">AN 3.68 · SA 1049</p>
-        <p class="sutta-text">“由於貪欲行，心隨貪轉，則於法不正受。”</p>
-        <p class="sutta-trans">"Driven by greed, the mind bends toward desire and misreceives the Dharma."</p>
-        <p class="sutta-text">“若心著於欲，則不知如實。”</p>
-        <p class="sutta-trans">"A mind clinging to sensual desire does not see things as they truly are."</p>
-      </div>
+    <!-- Language Switch -->
+    <div class="lang-toggle" aria-label="Language selector">
+      <button class="lang-btn active"
+              type="button"
+              data-lang-btn="en"
+              onclick="switchLang('en')">
+        EN
+      </button>
+      <button class="lang-btn"
+              type="button"
+              data-lang-btn="zh"
+              onclick="switchLang('zh')">
+        中文
+      </button>
     </div>
+  </header>
 
-    <!-- 2 -->
-    <div class="accordion-item">
-      <div class="accordion-header">
-        <span data-lang-en="Aversion-Type Disposition (Dosa)" data-lang-zh="瞋行性（Dosa）">瞋行性（Dosa）</span>
-        <span class="accordion-arrow">⌄</span>
-      </div>
-      <div class="accordion-content">
-        <p class="sutta-label">AN 3.68 · SA 1049</p>
-        <p class="sutta-text">“由於瞋恚行，心隨瞋轉，則於法不正受。”</p>
-        <p class="sutta-trans">"When driven by aversion, the mind becomes harsh and cannot receive the Dharma properly."</p>
-        <p class="sutta-text">“心若被恚覆，則不能了知。”</p>
-        <p class="sutta-trans">"A mind veiled by hatred cannot discern clearly."</p>
-      </div>
-    </div>
-
-    <!-- 3 -->
-    <div class="accordion-item">
-      <div class="accordion-header">
-        <span data-lang-en="Delusion-Type Disposition (Moha)" data-lang-zh="癡行性（Moha）">癡行性（Moha）</span>
-        <span class="accordion-arrow">⌄</span>
-      </div>
-      <div class="accordion-content">
-        <p class="sutta-label">AN 3.68 · SA 1049</p>
-        <p class="sutta-text">“由於愚癡行，心隨癡轉，則於法不正受。”</p>
-        <p class="sutta-trans">"When driven by delusion, the mind becomes confused and fails to grasp the Dharma."</p>
-        <p class="sutta-text">“愚癡覆心者，不見真實。”</p>
-        <p class="sutta-trans">"One whose mind is clouded by delusion cannot see truth."</p>
-      </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="accordion-item">
-      <div class="accordion-header">
-        <span data-lang-en="Faith Faculty (Saddhindriya)" data-lang-zh="信根（Saddhindriya）">信根（Saddhindriya）</span>
-        <span class="accordion-arrow">⌄</span>
-      </div>
-      <div class="accordion-content">
-        <p class="sutta-label">SN 48 · SA 791</p>
-        <p class="sutta-text">“信者，能淨其心。”</p>
-        <p class="sutta-trans">"Faith purifies the mind."</p>
-        <p class="sutta-text">“如水清澈，信令心明淨。”</p>
-        <p class="sutta-trans">"Just as clear water reflects forms, faith makes the mind bright and clean."</p>
-      </div>
-    </div>
-
-    <!-- 5 -->
-    <div class="accordion-item">
-      <div class="accordion-header">
-        <span data-lang-en="Wisdom Faculty (Paññindriya)" data-lang-zh="慧根（Paññindriya）">慧根（Paññindriya）</span>
-        <span class="accordion-arrow">⌄</span>
-      </div>
-      <div class="accordion-content">
-        <p class="sutta-label">AN 1.49 · SA 296</p>
-        <p class="sutta-text">“慧者，觀察諸法因緣所生。”</p>
-        <p class="sutta-trans">"One endowed with wisdom observes that all phenomena arise from causes and conditions."</p>
-        <p class="sutta-text">“慧能破闇。”</p>
-        <p class="sutta-trans">"Wisdom dispels darkness."</p>
-      </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="accordion-item">
-      <div class="accordion-header">
-        <span data-lang-en="Saddhānusārī · Faith-Follower" data-lang-zh="信行人（Saddhānusārī）">信行人（Saddhānusārī）</span>
-        <span class="accordion-arrow">⌄</span>
-      </div>
-      <div class="accordion-content">
-        <p class="sutta-label">AN 6.46 · EA 27.7 · Taishō T2</p>
-        <p class="sutta-text">“未能以慧見，而能隨信受者，是名信行。”</p>
-        <p class="sutta-trans">"One who does not yet see with wisdom, but follows through trust, is called a follower-by-faith."</p>
-        <p class="sutta-text">“以信為先導，心柔順、易攝受。”</p>
-        <p class="sutta-trans">"Led by faith, the heart is gentle and receptive."</p>
-      </div>
-    </div>
-
-    <!-- 7 -->
-    <div class="accordion-item">
-      <div class="accordion-header">
-        <span data-lang-en="Dhammānusārī · Dhamma-Follower" data-lang-zh="法行人（Dhammānusārī）">法行人（Dhammānusārī）</span>
-        <span class="accordion-arrow">⌄</span>
-      </div>
-      <div class="accordion-content">
-        <p class="sutta-label">AN 6.46 · EA 27.7 · Taishō T2</p>
-        <p class="sutta-text">“能以慧見，如實知法者，是名法行。”</p>
-        <p class="sutta-trans">"One who sees the Dhamma with wisdom, knowing it as it truly is, is called a follower-by-Dhamma."</p>
-        <p class="sutta-text">“以慧為先導，心明利、善觀察。”</p>
-        <p class="sutta-trans">"Led by wisdom, the mind becomes sharp and discerning."</p>
-      </div>
-    </div>
-
+  <!-- AdSense Unit -->
+  <div class="ad-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9188806824600550"
+         data-ad-slot="7257289001"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </div>
 
-  <button class="back-btn" onclick="showScreen('result-screen')"
-    data-lang-en="Back to Result" data-lang-zh="返回結果">
-    Back to Result
-  </button>
-</div>
+  <main class="content">
 
-<!-- ============================================================
-     Load JS
-============================================================ -->
-<script src="app.js"></script>
+    <!-- SCREEN: WELCOME -->
+    <section id="screen-welcome" class="screen screen-active">
+      <div class="welcome-card">
+        <h3 class="section-title"
+            data-lang-en="Find your meditation personality in 30 seconds."
+            data-lang-zh="用 30 秒找到適合你的禪修路徑。">
+          Find your meditation personality in 30 seconds.
+        </h3>
 
+        <p class="welcome-text"
+           data-lang-en="Answer 10 short questions to see your practitioner type, mind pattern, and suggested practices."
+           data-lang-zh="回答 10 個簡短問題，看看你的行人類型、心性習性與適合的入門修行方式。">
+          Answer 10 short questions to see your practitioner type, mind pattern, and suggested practices.
+        </p>
+
+        <button type="button"
+                class="primary-btn"
+                onclick="startAssessment()">
+          <span data-lang-en="Begin"
+                data-lang-zh="開始測驗">Begin</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN: QUESTIONNAIRE -->
+    <section id="screen-questions" class="screen">
+      <div class="question-card">
+        <div class="progress-row">
+          <div class="progress-label"
+               id="progress-label"
+               data-lang-en="Question 1 of 10"
+               data-lang-zh="第 1 題／共 10 題">
+            Question 1 of 10
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="question-text" id="question-text">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="answer-row" id="answer-row">
+          <!-- Answer buttons rendered by JS -->
+        </div>
+
+        <div class="nav-row">
+          <button type="button"
+                  class="secondary-btn"
+                  onclick="goToPreviousQuestion()"
+                  id="btn-prev">
+            <span data-lang-en="Back"
+                  data-lang-zh="上一題">Back</span>
+          </button>
+
+          <button type="button"
+                  class="primary-btn"
+                  onclick="goToNextQuestion()"
+                  id="btn-next">
+            <span data-lang-en="Next"
+                  data-lang-zh="下一題">Next</span>
+          </button>
+        </div>
+
+        <button type="button"
+                class="link-btn"
+                onclick="resetAssessment()">
+          <span data-lang-en="Start over"
+                data-lang-zh="重新開始">Start over</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN: LOADING -->
+    <section id="screen-loading" class="screen">
+      <div class="loading-card">
+        <div class="loading-orbit"></div>
+        <p class="loading-text"
+           data-lang-en="Mapping your inner tendencies..."
+           data-lang-zh="正在分析你的內在傾向...">
+          Mapping your inner tendencies...
+        </p>
+        <p class="loading-subtext"
+           data-lang-en="Balancing practitioner type, disposition, and practice pathways."
+           data-lang-zh="綜合行人類型、心性習性與修行方式中...">
+          Balancing practitioner type, disposition, and practice pathways.
+        </p>
+      </div>
+    </section>
+
+    <!-- SCREEN: RESULT -->
+    <section id="screen-result" class="screen">
+      <div class="result-card" id="result">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="cta-card">
+        <h3 class="cta-title"
+            data-lang-en="Need deeper guidance?"
+            data-lang-zh="想要更深入的建議？">
+          Need deeper guidance?
+        </h3>
+
+        <p class="cta-text"
+           data-lang-en="Chat with Lumi for a more detailed, personalized meditation recommendation."
+           data-lang-zh="聯繫 Lumi，獲得更全面、更個人的修行建議。">
+          Chat with Lumi for a more detailed, personalized meditation recommendation.
+        </p>
+
+        <a href="https://wa.me/60146205893"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="cta-button"
+           data-lang-en="Message Lumi on WhatsApp"
+           data-lang-zh="WhatsApp 聯繫 Lumi">
+          Message Lumi on WhatsApp
+        </a>
+
+        <div class="share-row">
+          <span class="share-label"
+                data-lang-en="Share your result:"
+                data-lang-zh="分享你的結果：">
+            Share your result:
+          </span>
+          <div class="share-buttons">
+            <img src="./assets/share-icons/facebook.png"
+                 class="share-icon"
+                 alt="Share on Facebook"
+                 onclick="shareTo('fb')" />
+            <img src="./assets/share-icons/instagram.png"
+                 class="share-icon"
+                 alt="Share on Instagram"
+                 onclick="shareTo('ig')" />
+            <img src="./assets/share-icons/twitter.png"
+                 class="share-icon"
+                 alt="Share on Twitter/X"
+                 onclick="shareTo('twitter')" />
+            <img src="./assets/share-icons/whatsapp.png"
+                 class="share-icon"
+                 alt="Share on WhatsApp"
+                 onclick="shareTo('wa')" />
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button type="button"
+                  class="secondary-btn"
+                  onclick="resetAssessment()">
+            <span data-lang-en="Retake assessment"
+                  data-lang-zh="重新測驗">Retake assessment</span>
+          </button>
+          <button type="button"
+                  class="link-btn"
+                  onclick="goHome()">
+            <span data-lang-en="Back to home"
+                  data-lang-zh="回到首頁">Back to home</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 The Inner Path Map. All rights reserved.</p>
+    <p class="footer-small">
+      This tool is based on Buddhist psychology and is intended for general meditation guidance.
+      此工具屬佛法心理學模型，僅提供一般禪修方向建議。
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
