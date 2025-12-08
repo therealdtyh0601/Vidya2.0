@@ -70,7 +70,6 @@ body {
   background: #d9e0e4;
 }
 
-/* Active / selected language */
 .lang-btn.active {
   background: #233645;
   color: #ffffff;
@@ -78,104 +77,249 @@ body {
 }
 
 /* ============================================================
-   CONTENT SECTION
+   CONTENT LAYOUT
    ============================================================ */
 
 .content {
   width: 92%;
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 620px;
+  margin: 20px auto 60px;
+}
+
+/* Generic screen containers */
+
+.screen {
+  display: none;
+}
+
+.screen-active {
+  display: block;
+}
+
+/* ============================================================
+   WELCOME SCREEN
+   ============================================================ */
+
+.welcome-card {
+  background: #ffffff;
+  padding: 20px 18px 24px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
 }
 
 .section-title {
   font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   color: #132029;
 }
 
-/* ============================================================
-   QUESTIONNAIRE BLOCKS
-   ============================================================ */
-
-.questionnaire {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.q-block {
-  background: #ffffff;
-  padding: 14px 16px;
-  border-radius: 14px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.q-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-  color: #394750;
-  line-height: 1.45;
-}
-
-.q-select {
-  width: 100%;
-  padding: 8px 12px;
-  background: #f3f7f8;
-  border-radius: 8px;
-  border: 1px solid #cfd9e1;
-  font-size: 1rem;
-  color: #1d2934;
+.welcome-text {
+  font-size: 0.98rem;
+  color: #3b4650;
+  margin-bottom: 18px;
 }
 
 /* ============================================================
-   PRIMARY BUTTONS
+   BUTTONS
    ============================================================ */
 
-.submit-btn,
-.reset-btn {
+.primary-btn,
+.secondary-btn,
+.link-btn {
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: 0.2s;
+}
+
+.primary-btn {
   width: 100%;
   padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.25s;
-}
-
-.submit-btn {
-  background: #233645;
+  background: linear-gradient(135deg, #6c7bff, #ff86b5);
   color: #ffffff;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
-.submit-btn:hover {
-  background: #1a2732;
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.16);
 }
 
-.reset-btn {
+.secondary-btn {
+  padding: 10px 18px;
   background: #e2e8ec;
   color: #233645;
 }
 
-.reset-btn:hover {
+.secondary-btn:hover {
   background: #d3dde4;
 }
 
+.link-btn {
+  margin-top: 12px;
+  background: transparent;
+  color: #66727c;
+  padding: 6px 10px;
+}
+
+.link-btn:hover {
+  color: #43505b;
+  text-decoration: underline;
+}
+
 /* ============================================================
-   RESULT CARD
+   QUESTIONNAIRE SCREEN
+   ============================================================ */
+
+.question-card {
+  background: #ffffff;
+  padding: 20px 18px 18px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.progress-row {
+  margin-bottom: 14px;
+}
+
+.progress-label {
+  font-size: 0.86rem;
+  color: #6a7480;
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e1e7ec;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #6c7bff, #ff86b5);
+  transition: width 0.25s ease-out;
+}
+
+.question-text {
+  margin-top: 14px;
+  margin-bottom: 16px;
+  font-size: 1.02rem;
+  color: #1f2933;
+  line-height: 1.5;
+}
+
+.answer-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Answer buttons (1–5 scale) */
+
+.answer-btn {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 12px;
+  border: 1px solid #ccd6e1;
+  background: #f5f7fa;
+  font-size: 0.86rem;
+  text-align: center;
+  cursor: pointer;
+  color: #384552;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  transition: 0.18s;
+}
+
+.answer-btn span.answer-emoji {
+  font-size: 1.2rem;
+}
+
+.answer-btn span.answer-label {
+  font-size: 0.78rem;
+}
+
+.answer-btn:hover {
+  background: #e9eff6;
+}
+
+.answer-btn.selected {
+  border-color: #6c7bff;
+  background: rgba(108, 123, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(108,123,255,0.35);
+}
+
+/* Nav row */
+
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+
+.loading-card {
+  background: #ffffff;
+  padding: 30px 22px 26px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.loading-orbit {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  border: 3px solid rgba(108, 123, 255, 0.25);
+  border-top-color: #6c7bff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: #1f2933;
+  margin-bottom: 6px;
+}
+
+.loading-subtext {
+  font-size: 0.9rem;
+  color: #66727c;
+}
+
+/* ============================================================
+   RESULT SCREEN
    ============================================================ */
 
 .result-card {
-  width: 92%;
-  max-width: 680px;
-  margin: 28px auto;
   background: #ffffff;
   padding: 24px 20px;
-  border-radius: 16px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
 }
 
 .result-card h2 {
@@ -185,54 +329,39 @@ body {
 }
 
 .result-card h3 {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   margin-top: 18px;
   margin-bottom: 6px;
   color: #20303d;
 }
 
 .result-card p {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: #3c4751;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   line-height: 1.55;
 }
 
-/* ============================================================
-   ADS
-   ============================================================ */
-
-.ad-container {
-  margin: 20px auto;
-  width: 92%;
-  max-width: 680px;
-}
-
-/* ============================================================
-   CTA CARD
-   ============================================================ */
+/* CTA */
 
 .cta-card {
-  width: 92%;
-  max-width: 680px;
-  margin: 24px auto;
   background: #ffffff;
-  padding: 22px 18px;
-  border-radius: 16px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px 18px 22px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   text-align: center;
 }
 
 .cta-title {
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: #132029;
 }
 
 .cta-text {
   font-size: 0.96rem;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   color: #3c4851;
   line-height: 1.5;
 }
@@ -242,11 +371,11 @@ body {
   padding: 10px 20px;
   background: #25D366;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 999px;
   font-weight: 600;
   text-decoration: none;
-  font-size: 1rem;
-  transition: 0.25s;
+  font-size: 0.98rem;
+  transition: 0.2s;
 }
 
 .cta-button:hover {
@@ -254,12 +383,12 @@ body {
 }
 
 .share-row {
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .share-label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-size: 0.9rem;
   color: #55626d;
 }
@@ -274,12 +403,20 @@ body {
   width: 32px;
   height: 32px;
   cursor: pointer;
-  opacity: 0.85;
-  transition: 0.2s;
+  opacity: 0.86;
+  transition: 0.18s;
 }
 
 .share-icon:hover {
   opacity: 1;
+  transform: translateY(-1px);
+}
+
+.result-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 /* ============================================================
@@ -288,7 +425,7 @@ body {
 
 .footer {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 32px;
   padding-bottom: 30px;
   color: #6f7a81;
   font-size: 0.85rem;
@@ -314,8 +451,19 @@ body {
     width: 80%;
   }
 
+  .welcome-card,
+  .question-card,
   .result-card,
-  .cta-card {
-    padding: 30px;
+  .cta-card,
+  .loading-card {
+    padding: 26px 24px 24px;
+  }
+
+  .answer-btn span.answer-emoji {
+    font-size: 1.4rem;
+  }
+
+  .answer-btn span.answer-label {
+    font-size: 0.82rem;
   }
 }
