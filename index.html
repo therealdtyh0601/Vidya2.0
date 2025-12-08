@@ -3,255 +3,269 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>The Inner Path Map | 內在修行路徑圖</title>
-
-  <meta name="description" content="A Buddhist-psychology meditation profile that identifies your practitioner type, disposition pattern, and optimal entry practices. 基於佛法心理學的禪修人格測試，協助你找到行人類型、心性習性與入門修行方式。" />
-  <meta name="keywords" content="meditation test, mindfulness, buddhist psychology,五根,七覺支,禪修人格,信行人,法行人" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="The Inner Path Map | 內在修行路徑圖" />
-  <meta property="og:description" content="A Buddhist-psychology tool that shows your meditation personality and your best pathways into practice." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="./assets/share-wide.png" />
-  <meta property="og:url" content="https://therealdtyh0601.github.io/Vidya2.0/" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Inner Path Map | 內在修行路徑圖" />
-  <meta name="twitter:description" content="Discover your meditation personality and ideal practices." />
-  <meta name="twitter:image" content="./assets/share-wide.png" />
-
-  <link rel="icon" href="./assets/app-icon.png" />
-
+  <title>The Inner Path Map · Lumi Studios</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9188806824600550" crossorigin="anonymous"></script>
+  <!-- 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="app-header">
-    <img src="./assets/app-icon.png" class="app-logo" alt="Inner Path Map Logo" />
+  <div id="app">
 
-    <h1 class="app-title"
-        data-lang-en="The Inner Path Map"
-        data-lang-zh="內在修行路徑圖">
-      The Inner Path Map
-    </h1>
-
-    <h2 class="app-title-zh"
-        data-lang-en="Meditation Personality Profiler"
-        data-lang-zh="禪修人格測驗工具">
-      Meditation Personality Profiler
-    </h2>
-
-    <!-- Language Switch -->
-    <div class="lang-toggle" aria-label="Language selector">
-      <button class="lang-btn active"
-              type="button"
-              data-lang-btn="en"
-              onclick="switchLang('en')">
-        EN
-      </button>
-      <button class="lang-btn"
-              type="button"
-              data-lang-btn="zh"
-              onclick="switchLang('zh')">
-        中文
-      </button>
-    </div>
-  </header>
-
-  <!-- AdSense Unit -->
-  <div class="ad-container">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-9188806824600550"
-         data-ad-slot="7257289001"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-
-  <main class="content">
-
-    <!-- SCREEN: WELCOME -->
-    <section id="screen-welcome" class="screen screen-active">
-      <div class="welcome-card">
-        <h3 class="section-title"
-            data-lang-en="Find your meditation personality in 30 seconds."
-            data-lang-zh="用 30 秒找到適合你的禪修路徑。">
-          Find your meditation personality in 30 seconds.
-        </h3>
-
-        <p class="welcome-text"
-           data-lang-en="Answer 10 short questions to see your practitioner type, mind pattern, and suggested practices."
-           data-lang-zh="回答 10 個簡短問題，看看你的行人類型、心性習性與適合的入門修行方式。">
-          Answer 10 short questions to see your practitioner type, mind pattern, and suggested practices.
+    <!-- ======================================================
+         SCREEN 0 — LANGUAGE SELECTION
+    ====================================================== -->
+    <section id="language-screen" class="screen screen-active">
+      <div class="card-centered">
+        <h1 class="app-title-en">The Inner Path Map</h1>
+        <h2 class="app-title-zh">內在修行路徑圖</h2>
+        <p class="subtitle" data-lang-en="A Buddhist-based inner tendencies assessment"
+                           data-lang-zh="一款基於佛典的內在心性測驗">
+            A Buddhist-based inner tendencies assessment
         </p>
 
-        <button type="button"
-                class="primary-btn"
-                onclick="startAssessment()">
-          <span data-lang-en="Begin"
-                data-lang-zh="開始測驗">Begin</span>
+        <button class="lang-btn" onclick="selectLanguage('en')">English</button>
+        <button class="lang-btn" onclick="selectLanguage('zh')">中文</button>
+      </div>
+    </section>
+
+
+    <!-- ======================================================
+         SCREEN 1 — USER INFO (NAME + DATE)
+    ====================================================== -->
+    <section id="info-screen" class="screen">
+      <div class="card-centered">
+
+        <h2 data-lang-en="Before we begin"
+            data-lang-zh="開始前的資訊">
+            Before we begin
+        </h2>
+
+        <label data-lang-en="Your Name"
+               data-lang-zh="你的名字">
+          Your Name
+        </label>
+        <input id="userName" type="text" placeholder="Your name" />
+
+        <label data-lang-en="Today's Date"
+               data-lang-zh="今天日期">
+          Today's Date
+        </label>
+        <input id="userDate" type="date" />
+
+        <button class="action-btn next-btn" onclick="goToQuestions()"
+                data-lang-en="Start"
+                data-lang-zh="開始測試">
+            Start
+        </button>
+
+        <button class="ghost-btn" onclick="goBack('language-screen')"
+                data-lang-en="Back"
+                data-lang-zh="返回">
+            返回
         </button>
       </div>
     </section>
 
-    <!-- SCREEN: QUESTIONNAIRE -->
-    <section id="screen-questions" class="screen">
-      <div class="question-card">
-        <div class="progress-row">
-          <div class="progress-label"
-               id="progress-label"
-               data-lang-en="Question 1 of 10"
-               data-lang-zh="第 1 題／共 10 題">
-            Question 1 of 10
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
+
+    <!-- ======================================================
+         SCREEN 2 — QUESTIONNAIRE
+    ====================================================== -->
+    <section id="question-screen" class="screen">
+      <div class="question-wrapper">
+
+        <div id="questionCounter">Q0 / 10</div>
+
+        <h3 id="questionText">Question text here…</h3>
+
+        <div id="optionsContainer">
+          <!-- JS 會生成選項 -->
         </div>
 
-        <div class="question-text" id="question-text">
-          <!-- Populated by JS -->
-        </div>
-
-        <div class="answer-row" id="answer-row">
-          <!-- Answer buttons rendered by JS -->
-        </div>
-
-        <div class="nav-row">
-          <button type="button"
-                  class="secondary-btn"
-                  onclick="goToPreviousQuestion()"
-                  id="btn-prev">
-            <span data-lang-en="Back"
-                  data-lang-zh="上一題">Back</span>
+        <div class="question-nav">
+          <button id="backBtn" class="ghost-btn" onclick="prevQuestion()"
+                  data-lang-en="Back"
+                  data-lang-zh="返回">
+            Back
           </button>
 
-          <button type="button"
-                  class="primary-btn"
-                  onclick="goToNextQuestion()"
-                  id="btn-next">
-            <span data-lang-en="Next"
-                  data-lang-zh="下一題">Next</span>
+          <button id="nextBtn" class="action-btn"
+                  onclick="nextQuestion()"
+                  data-lang-en="Next"
+                  data-lang-zh="下一題">
+            Next
           </button>
         </div>
+      </div>
+    </section>
 
-        <button type="button"
-                class="link-btn"
-                onclick="resetAssessment()">
-          <span data-lang-en="Start over"
-                data-lang-zh="重新開始">Start over</span>
+
+    <!-- ======================================================
+         SCREEN 3 — RESULT PAGE (信行 / 法行)
+         已整合 SHARE 按鈕
+    ====================================================== -->
+    <section id="result-screen" class="screen">
+
+      <header class="result-header">
+        <h1 class="app-title-en">The Inner Path Map</h1>
+        <h2 class="app-title-zh">內在修行路徑圖</h2>
+        <p class="app-subtitle"
+           data-lang-en="Your practitioner type and inner tendencies"
+           data-lang-zh="你的修行行者類型與內在傾向">
+        </p>
+      </header>
+
+      <div class="result-aura">
+        <article id="resultCard" class="result-card">
+          <!-- JS 會填入信行人／法行人 -->
+        </article>
+      </div>
+
+      <div class="result-actions">
+        <button id="learnMoreBtn" class="action-btn learn-btn"
+                data-lang-en="Learn More"
+                data-lang-zh="了解更多">
+          Learn More
+        </button>
+
+        <!-- 分享結果按鈕 -->
+        <button id="shareBtn" class="action-btn share-btn"
+                data-lang-en="Share Result"
+                data-lang-zh="分享結果">
+          分享結果
+        </button>
+
+        <button id="restartBtn" class="ghost-btn"
+                onclick="restartAssessment()"
+                data-lang-en="Retake Assessment"
+                data-lang-zh="重新測驗">
+          Retake Assessment
         </button>
       </div>
+
     </section>
 
-    <!-- SCREEN: LOADING -->
-    <section id="screen-loading" class="screen">
-      <div class="loading-card">
-        <div class="loading-orbit"></div>
-        <p class="loading-text"
-           data-lang-en="Mapping your inner tendencies..."
-           data-lang-zh="正在分析你的內在傾向...">
-          Mapping your inner tendencies...
-        </p>
-        <p class="loading-subtext"
-           data-lang-en="Balancing practitioner type, disposition, and practice pathways."
-           data-lang-zh="綜合行人類型、心性習性與修行方式中...">
-          Balancing practitioner type, disposition, and practice pathways.
-        </p>
-      </div>
-    </section>
 
-    <!-- SCREEN: RESULT -->
-    <section id="screen-result" class="screen">
-      <div class="result-card" id="result">
-        <!-- Populated by JS -->
-      </div>
+    <!-- ======================================================
+         SCREEN 4 — LEARN MORE
+         含 Legal Notes + Accordion
+    ====================================================== -->
+    <section id="learn-faculties" class="screen learn-section">
+      <div class="lm-wrapper">
 
-      <div class="cta-card">
-        <h3 class="cta-title"
-            data-lang-en="Need deeper guidance?"
-            data-lang-zh="想要更深入的建議？">
-          Need deeper guidance?
+        <h2 data-lang-en="About This Assessment"
+            data-lang-zh="關於此修行測驗">
+          About This Assessment
+        </h2>
+
+        <p class="lm-intro"
+           data-lang-en="This tool maps your inner tendencies according to classical Buddhist psychology.  
+           Each question corresponds to a mental habit described in the Pāli Canon and Āgamas."
+           data-lang-zh="此工具依據佛典中的心性結構，測量你的五習性與入道傾向。每一題皆對應阿含與巴利經中的心行描述。">
+        </p>
+
+        <!-- Info Cards -->
+        <div class="lm-card">
+          <h3 data-lang-en="Five Dispositions"
+              data-lang-zh="五習性">
+            五習性
+          </h3>
+          <p data-lang-en="Greed-type, Aversion-type, Delusion-type, Faith-soft, Insight-analytic"
+             data-lang-zh="貪行性、瞋行性、癡行性、信柔型、智觀型">
+          </p>
+        </div>
+
+        <div class="lm-card">
+          <h3 data-lang-en="Five Faculties & Powers"
+              data-lang-zh="五根五力">
+            五根五力
+          </h3>
+          <p data-lang-en="Faith, Effort, Mindfulness, Concentration, Wisdom"
+             data-lang-zh="信根、精進根、念根、定根、慧根">
+          </p>
+        </div>
+
+        <!-- Sutta Accordion 容器 -->
+        <h3 class="lm-section-title"
+            data-lang-en="Canonical Sources"
+            data-lang-zh="經典依據">
+          經典依據
         </h3>
 
-        <p class="cta-text"
-           data-lang-en="Chat with Lumi for a more detailed, personalized meditation recommendation."
-           data-lang-zh="聯繫 Lumi，獲得更全面、更個人的修行建議。">
-          Chat with Lumi for a more detailed, personalized meditation recommendation.
-        </p>
-
-        <a href="https://wa.me/60146205893"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="cta-button"
-           data-lang-en="Message Lumi on WhatsApp"
-           data-lang-zh="WhatsApp 聯繫 Lumi">
-          Message Lumi on WhatsApp
-        </a>
-
-        <div class="share-row">
-          <span class="share-label"
-                data-lang-en="Share your result:"
-                data-lang-zh="分享你的結果：">
-            Share your result:
-          </span>
-          <div class="share-buttons">
-            <img src="./assets/share-icons/facebook.png"
-                 class="share-icon"
-                 alt="Share on Facebook"
-                 onclick="shareTo('fb')" />
-            <img src="./assets/share-icons/instagram.png"
-                 class="share-icon"
-                 alt="Share on Instagram"
-                 onclick="shareTo('ig')" />
-            <img src="./assets/share-icons/twitter.png"
-                 class="share-icon"
-                 alt="Share on Twitter/X"
-                 onclick="shareTo('twitter')" />
-            <img src="./assets/share-icons/whatsapp.png"
-                 class="share-icon"
-                 alt="Share on WhatsApp"
-                 onclick="shareTo('wa')" />
-          </div>
+        <div id="suttaAccordion">
+          <!-- 你之前生成的 Accordion HTML 放在這裡 -->
         </div>
 
-        <div class="result-actions">
-          <button type="button"
-                  class="secondary-btn"
-                  onclick="resetAssessment()">
-            <span data-lang-en="Retake assessment"
-                  data-lang-zh="重新測驗">Retake assessment</span>
-          </button>
-          <button type="button"
-                  class="link-btn"
-                  onclick="goHome()">
-            <span data-lang-en="Back to home"
-                  data-lang-zh="回到首頁">Back to home</span>
-          </button>
+        <!-- LEGAL SECTION -->
+        <div class="legal-section">
+
+          <h3 data-lang-en="Legal Notes & Attribution"
+              data-lang-zh="法律聲明與經典出處">
+            法律聲明與經典出處
+          </h3>
+
+          <p data-lang-en="This tool is a religious-oriented assessment inspired by classical Buddhist psychology. It is not a medical, psychological, or diagnostic instrument."
+             data-lang-zh="本工具為宗教導向的心性測評，靈感源自佛教心理學經典，不屬於醫療、心理諮商或診斷用途。">
+          </p>
+
+          <p data-lang-en="Canonical references include: Pāli Nikāyas (AN, SN), Chinese Āgamas (SA, EA, T-series), and Tibetan Kangyur translations."
+             data-lang-zh="經典引用包含：巴利經藏（AN、SN）、漢譯阿含（雜阿含 SA、增一阿含 EA、大正藏 T 系列）以及《甘珠爾》藏譯經典。">
+          </p>
+
+          <p data-lang-en="All textual materials belong to their respective public-domain canonical collections. This assessment offers interpretive summaries, not authoritative scholastic doctrine."
+             data-lang-zh="所有經文內容皆屬公共領域之佛教典籍。本測評提供的是詮釋式摘要，並非權威宗教註解。">
+          </p>
+
+          <p data-lang-en="User results are for personal reflection only. Lumi Studios is not liable for decisions made based on this assessment."
+             data-lang-zh="本測評之結果僅供個人反思，不構成任何決策建議。Lumi Studios 不對依此做出的決策承擔責任。">
+          </p>
+
+          <p class="legal-brand">
+            © Lumi Studios 光靈 — The Inner Path Map v3
+          </p>
+
         </div>
+
+        <button class="ghost-btn" onclick="goBack('result-screen')"
+                data-lang-en="Back to result"
+                data-lang-zh="返回結果">
+          返回結果
+        </button>
+
       </div>
     </section>
 
-  </main>
+  </div><!-- end #app -->
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 The Inner Path Map. All rights reserved.</p>
-    <p class="footer-small">
-      This tool is based on Buddhist psychology and is intended for general meditation guidance.
-      此工具屬佛法心理學模型，僅提供一般禪修方向建議。
-    </p>
-  </footer>
 
+  <!-- ======================================================
+       SHARE MODULE JS
+  ====================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const shareBtn = document.getElementById("shareBtn");
+
+      if (shareBtn) {
+        shareBtn.addEventListener("click", () => {
+          const resultText = document.getElementById("resultCard").innerText;
+
+          if (navigator.share) {
+            navigator.share({
+              title: "Inner Path Map – 修行行者結果",
+              text: resultText,
+              url: window.location.href
+            }).catch(err => console.error("Share failed:", err));
+          } else {
+            alert("Sharing is not supported on this device.");
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- APP JS -->
   <script src="app.js"></script>
+
 </body>
 </html>
