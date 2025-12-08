@@ -17,15 +17,18 @@
      SCREEN 1 — Language Selection
 ============================================================ -->
 <div id="language-screen" class="screen active">
-  <h1 class="app-title">The Inner Path Map<br><span class="subtitle">內在修行路徑圖</span></h1>
+  <h1 class="app-title">
+    The Inner Path Map<br>
+    <span class="subtitle">內在修行路徑圖</span>
+  </h1>
 
   <p class="intro-text" data-lang-en="Choose your language" data-lang-zh="選擇語言">
     Choose your language
   </p>
 
   <div class="language-options">
-    <button class="lang-btn" data-lang="en">English</button>
-    <button class="lang-btn" data-lang="zh">中文</button>
+    <button class="lang-btn" onclick="selectLanguage('en')">English</button>
+    <button class="lang-btn" onclick="selectLanguage('zh')">中文</button>
   </div>
 </div>
 
@@ -35,22 +38,23 @@
 <div id="info-screen" class="screen">
   <h2 data-lang-en="Before We Begin" data-lang-zh="在開始之前">Before We Begin</h2>
 
-  <p class="info-desc" data-lang-en="Please enter your name and today's date. This will appear on the final reflection card."
-      data-lang-zh="請輸入姓名與日期，將會顯示在最終的修行反思卡上。">
-    Please enter your name and today's date. This will appear on the final reflection card.
+  <p class="info-desc"
+     data-lang-en="Please enter your name and today's date. This will appear on the final reflection card."
+     data-lang-zh="請輸入姓名與日期，將會顯示在最終的修行反思卡上。">
+     Please enter your name and today's date. This will appear on the final reflection card.
   </p>
 
   <div class="input-group">
     <label data-lang-en="Your Name" data-lang-zh="你的名字">Your Name</label>
-    <input id="username" type="text" placeholder="Your Name" />
+    <input id="userName" type="text" placeholder="Your Name" />
   </div>
 
   <div class="input-group">
     <label data-lang-en="Date" data-lang-zh="日期">Date</label>
-    <input id="dateInput" type="date" />
+    <input id="userDate" type="date" />
   </div>
 
-  <button id="startAssessment" class="primary-btn"
+  <button class="primary-btn" onclick="goToQuestions()"
           data-lang-en="Start" data-lang-zh="開始">
     Start
   </button>
@@ -60,18 +64,19 @@
      SCREEN 3 — Questions
 ============================================================ -->
 <div id="question-screen" class="screen">
-  <h2 id="questionText">Question Text</h2>
+  <h2 id="questionText">Question</h2>
 
-  <div id="answerButtons" class="answer-options"></div>
+  <!-- IMPORTANT: FIXED ID to match app.js -->
+  <div id="optionsContainer" class="answer-options"></div>
 
-  <button id="nextBtn" class="next-btn"
-          data-lang-en="Next" data-lang-zh="下一題">
-    Next
-  </button>
+  <div class="question-nav">
+    <button class="back-btn" onclick="prevQuestion()" data-lang-en="Back" data-lang-zh="上一題">Back</button>
+    <button class="next-btn" onclick="nextQuestion()" data-lang-en="Next" data-lang-zh="下一題">Next</button>
+  </div>
 </div>
 
 <!-- ============================================================
-     SCREEN 4 — Result Screen
+     SCREEN 4 — Result
 ============================================================ -->
 <div id="result-screen" class="screen">
   <h2 data-lang-en="Your Inner Path Result" data-lang-zh="你的內在修行結構結果">
@@ -82,27 +87,24 @@
 
   <div class="result-actions">
     <button id="learnMoreBtn" class="action-btn learn-btn"
-      data-lang-en="Learn More"
-      data-lang-zh="深入了解">
+      data-lang-en="Learn More" data-lang-zh="深入了解">
       Learn More
     </button>
 
     <button id="shareBtn" class="action-btn share-btn"
-      data-lang-en="Share Result"
-      data-lang-zh="分享結果">
+      data-lang-en="Share Result" data-lang-zh="分享結果">
       分享結果
     </button>
 
-    <button id="restartBtn" class="action-btn restart-btn"
-      data-lang-en="Restart"
-      data-lang-zh="重新測驗">
+    <button class="action-btn restart-btn" onclick="restartAssessment()"
+      data-lang-en="Restart" data-lang-zh="重新測驗">
       Restart
     </button>
   </div>
 </div>
 
 <!-- ============================================================
-     SCREEN 5 — Learn More & Sutta Accordion
+     SCREEN 5 — Learn More + Sutta Accordion
 ============================================================ -->
 <div id="learn-faculties" class="screen learn-screen">
 
@@ -113,145 +115,121 @@
      data-lang-zh="了解佛教心理學中對五行性、五根、以及信行人 / 法行人的描述。">
   </p>
 
-
   <!-- ======================================================
-     INNER PATH MAP — V3 SUTTA ACCORDION (FINAL VERSION)
-====================================================== -->
+       FINAL ACCORDION BLOCK (Corrected)
+  ======================================================= -->
 
-<div id="suttaAccordion" class="accordion-group">
+  <div id="suttaAccordion" class="accordion-group">
 
-  <!-- 1: Greed-Type -->
-  <div class="accordion-item">
-    <div class="accordion-header">
-      <span data-lang-en="Greed-Type Disposition (Rāga)"
-            data-lang-zh="貪行性（Rāga）">貪行性（Rāga）</span>
-      <span class="accordion-arrow">⌄</span>
+    <!-- 1 -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span data-lang-en="Greed-Type Disposition (Rāga)" data-lang-zh="貪行性（Rāga）">貪行性（Rāga）</span>
+        <span class="accordion-arrow">⌄</span>
+      </div>
+      <div class="accordion-content">
+        <p class="sutta-label">AN 3.68 · SA 1049</p>
+        <p class="sutta-text">“由於貪欲行，心隨貪轉，則於法不正受。”</p>
+        <p class="sutta-trans">"Driven by greed, the mind bends toward desire and misreceives the Dharma."</p>
+        <p class="sutta-text">“若心著於欲，則不知如實。”</p>
+        <p class="sutta-trans">"A mind clinging to sensual desire does not see things as they truly are."</p>
+      </div>
     </div>
-    <div class="accordion-content">
-      <p class="sutta-label">AN 3.68 · SA 1049</p>
 
-      <p class="sutta-text">“由於貪欲行，心隨貪轉，則於法不正受。”</p>
-      <p class="sutta-trans">"Driven by greed, the mind bends toward desire and misreceives the Dharma."</p>
-
-      <p class="sutta-text">“若心著於欲，則不知如實。”</p>
-      <p class="sutta-trans">"A mind clinging to sensual desire does not see things as they truly are."</p>
+    <!-- 2 -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span data-lang-en="Aversion-Type Disposition (Dosa)" data-lang-zh="瞋行性（Dosa）">瞋行性（Dosa）</span>
+        <span class="accordion-arrow">⌄</span>
+      </div>
+      <div class="accordion-content">
+        <p class="sutta-label">AN 3.68 · SA 1049</p>
+        <p class="sutta-text">“由於瞋恚行，心隨瞋轉，則於法不正受。”</p>
+        <p class="sutta-trans">"When driven by aversion, the mind becomes harsh and cannot receive the Dharma properly."</p>
+        <p class="sutta-text">“心若被恚覆，則不能了知。”</p>
+        <p class="sutta-trans">"A mind veiled by hatred cannot discern clearly."</p>
+      </div>
     </div>
+
+    <!-- 3 -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span data-lang-en="Delusion-Type Disposition (Moha)" data-lang-zh="癡行性（Moha）">癡行性（Moha）</span>
+        <span class="accordion-arrow">⌄</span>
+      </div>
+      <div class="accordion-content">
+        <p class="sutta-label">AN 3.68 · SA 1049</p>
+        <p class="sutta-text">“由於愚癡行，心隨癡轉，則於法不正受。”</p>
+        <p class="sutta-trans">"When driven by delusion, the mind becomes confused and fails to grasp the Dharma."</p>
+        <p class="sutta-text">“愚癡覆心者，不見真實。”</p>
+        <p class="sutta-trans">"One whose mind is clouded by delusion cannot see truth."</p>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span data-lang-en="Faith Faculty (Saddhindriya)" data-lang-zh="信根（Saddhindriya）">信根（Saddhindriya）</span>
+        <span class="accordion-arrow">⌄</span>
+      </div>
+      <div class="accordion-content">
+        <p class="sutta-label">SN 48 · SA 791</p>
+        <p class="sutta-text">“信者，能淨其心。”</p>
+        <p class="sutta-trans">"Faith purifies the mind."</p>
+        <p class="sutta-text">“如水清澈，信令心明淨。”</p>
+        <p class="sutta-trans">"Just as clear water reflects forms, faith makes the mind bright and clean."</p>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span data-lang-en="Wisdom Faculty (Paññindriya)" data-lang-zh="慧根（Paññindriya）">慧根（Paññindriya）</span>
+        <span class="accordion-arrow">⌄</span>
+      </div>
+      <div class="accordion-content">
+        <p class="sutta-label">AN 1.49 · SA 296</p>
+        <p class="sutta-text">“慧者，觀察諸法因緣所生。”</p>
+        <p class="sutta-trans">"One endowed with wisdom observes that all phenomena arise from causes and conditions."</p>
+        <p class="sutta-text">“慧能破闇。”</p>
+        <p class="sutta-trans">"Wisdom dispels darkness."</p>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span data-lang-en="Saddhānusārī · Faith-Follower" data-lang-zh="信行人（Saddhānusārī）">信行人（Saddhānusārī）</span>
+        <span class="accordion-arrow">⌄</span>
+      </div>
+      <div class="accordion-content">
+        <p class="sutta-label">AN 6.46 · EA 27.7 · Taishō T2</p>
+        <p class="sutta-text">“未能以慧見，而能隨信受者，是名信行。”</p>
+        <p class="sutta-trans">"One who does not yet see with wisdom, but follows through trust, is called a follower-by-faith."</p>
+        <p class="sutta-text">“以信為先導，心柔順、易攝受。”</p>
+        <p class="sutta-trans">"Led by faith, the heart is gentle and receptive."</p>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <span data-lang-en="Dhammānusārī · Dhamma-Follower" data-lang-zh="法行人（Dhammānusārī）">法行人（Dhammānusārī）</span>
+        <span class="accordion-arrow">⌄</span>
+      </div>
+      <div class="accordion-content">
+        <p class="sutta-label">AN 6.46 · EA 27.7 · Taishō T2</p>
+        <p class="sutta-text">“能以慧見，如實知法者，是名法行。”</p>
+        <p class="sutta-trans">"One who sees the Dhamma with wisdom, knowing it as it truly is, is called a follower-by-Dhamma."</p>
+        <p class="sutta-text">“以慧為先導，心明利、善觀察。”</p>
+        <p class="sutta-trans">"Led by wisdom, the mind becomes sharp and discerning."</p>
+      </div>
+    </div>
+
   </div>
 
-  <!-- 2: Aversion-Type -->
-  <div class="accordion-item">
-    <div class="accordion-header">
-      <span data-lang-en="Aversion-Type Disposition (Dosa)"
-            data-lang-zh="瞋行性（Dosa）">瞋行性（Dosa）</span>
-      <span class="accordion-arrow">⌄</span>
-    </div>
-    <div class="accordion-content">
-      <p class="sutta-label">AN 3.68 · SA 1049</p>
-
-      <p class="sutta-text">“由於瞋恚行，心隨瞋轉，則於法不正受。”</p>
-      <p class="sutta-trans">"When driven by aversion, the mind becomes harsh and cannot receive the Dharma properly."</p>
-
-      <p class="sutta-text">“心若被恚覆，則不能了知。”</p>
-      <p class="sutta-trans">"A mind veiled by hatred cannot discern clearly."</p>
-    </div>
-  </div>
-
-  <!-- 3: Delusion-Type -->
-  <div class="accordion-item">
-    <div class="accordion-header">
-      <span data-lang-en="Delusion-Type Disposition (Moha)"
-            data-lang-zh="癡行性（Moha）">癡行性（Moha）</span>
-      <span class="accordion-arrow">⌄</span>
-    </div>
-    <div class="accordion-content">
-      <p class="sutta-label">AN 3.68 · SA 1049</p>
-
-      <p class="sutta-text">“由於愚癡行，心隨癡轉，則於法不正受。”</p>
-      <p class="sutta-trans">"When driven by delusion, the mind becomes confused and fails to grasp the Dharma."</p>
-
-      <p class="sutta-text">“愚癡覆心者，不見真實。”</p>
-      <p class="sutta-trans">"One whose mind is clouded by delusion cannot see truth."</p>
-    </div>
-  </div>
-
-  <!-- 4: Faith Faculty -->
-  <div class="accordion-item">
-    <div class="accordion-header">
-      <span data-lang-en="Faith Faculty (Saddhindriya)"
-            data-lang-zh="信根（Saddhindriya）">信根（Saddhindriya）</span>
-      <span class="accordion-arrow">⌄</span>
-    </div>
-    <div class="accordion-content">
-      <p class="sutta-label">SN 48 · SA 791</p>
-
-      <p class="sutta-text">“信者，能淨其心。”</p>
-      <p class="sutta-trans">"Faith purifies the mind."</p>
-
-      <p class="sutta-text">“如水清澈，信令心明淨。”</p>
-      <p class="sutta-trans">"Just as clear water reflects forms, faith makes the mind bright and clean."</p>
-    </div>
-  </div>
-
-  <!-- 5: Wisdom Faculty -->
-  <div class="accordion-item">
-    <div class="accordion-header">
-      <span data-lang-en="Wisdom Faculty (Paññindriya)"
-            data-lang-zh="慧根（Paññindriya）">慧根（Paññindriya）</span>
-      <span class="accordion-arrow">⌄</span>
-    </div>
-    <div class="accordion-content">
-      <p class="sutta-label">AN 1.49 · SA 296</p>
-
-      <p class="sutta-text">“慧者，觀察諸法因緣所生。”</p>
-      <p class="sutta-trans">"One endowed with wisdom observes that all phenomena arise from causes and conditions."</p>
-
-      <p class="sutta-text">“慧能破闇。”</p>
-      <p class="sutta-trans">"Wisdom dispels darkness."</p>
-    </div>
-  </div>
-
-  <!-- 6: Faith-Follower -->
-  <div class="accordion-item">
-    <div class="accordion-header">
-      <span data-lang-en="Saddhānusārī · Faith-Follower"
-            data-lang-zh="信行人（Saddhānusārī）">信行人（Saddhānusārī）</span>
-      <span class="accordion-arrow">⌄</span>
-    </div>
-    <div class="accordion-content">
-      <p class="sutta-label">AN 6.46 · EA 27.7 · Taishō T2</p>
-
-      <p class="sutta-text">“未能以慧見，而能隨信受者，是名信行。”</p>
-      <p class="sutta-trans">"One who does not yet see with wisdom, but follows through trust, is called a follower-by-faith."</p>
-
-      <p class="sutta-text">“以信為先導，心柔順、易攝受。”</p>
-      <p class="sutta-trans">"Led by faith, the heart is gentle and receptive."</p>
-    </div>
-  </div>
-
-  <!-- 7: Dhamma-Follower -->
-  <div class="accordion-item">
-    <div class="accordion-header">
-      <span data-lang-en="Dhammānusārī · Dhamma-Follower"
-            data-lang-zh="法行人（Dhammānusārī）">法行人（Dhammānusārī）</span>
-      <span class="accordion-arrow">⌄</span>
-    </div>
-    <div class="accordion-content">
-      <p class="sutta-label">AN 6.46 · EA 27.7 · Taishō T2</p>
-
-      <p class="sutta-text">“能以慧見，如實知法者，是名法行。”</p>
-      <p class="sutta-trans">"One who sees the Dhamma with wisdom, knowing it as it truly is, is called a follower-by-Dhamma."</p>
-
-      <p class="sutta-text">“以慧為先導，心明利、善觀察。”</p>
-      <p class="sutta-trans">"Led by wisdom, the mind becomes sharp and discerning."</p>
-    </div>
-  </div>
-
-</div>
-
-  <!-- RETURN BUTTON -->
-  <button id="backToResult" class="back-btn"
-    data-lang-en="Back to Result"
-    data-lang-zh="返回結果">
+  <button class="back-btn" onclick="showScreen('result-screen')"
+    data-lang-en="Back to Result" data-lang-zh="返回結果">
     Back to Result
   </button>
 </div>
