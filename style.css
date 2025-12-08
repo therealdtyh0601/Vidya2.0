@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+  font-family: "Inter", "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -39,7 +39,7 @@ body {
 }
 
 .app-title-zh {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: #54636f;
   margin-top: 4px;
@@ -60,13 +60,21 @@ body {
   color: #1d2934;
   background: #e2e8ec;
   border: 1px solid #d1d9df;
-  border-radius: 8px;
+  border-radius: 999px;
   cursor: pointer;
   transition: 0.2s;
+  min-width: 54px;
 }
 
 .lang-btn:hover {
   background: #d9e0e4;
+}
+
+/* Active / selected language */
+.lang-btn.active {
+  background: #233645;
+  color: #ffffff;
+  border-color: #233645;
 }
 
 /* ============================================================
@@ -97,10 +105,10 @@ body {
 }
 
 .q-block {
-  background: #fff;
+  background: #ffffff;
   padding: 14px 16px;
   border-radius: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .q-label {
@@ -122,25 +130,38 @@ body {
 }
 
 /* ============================================================
-   SUBMIT BUTTON
+   PRIMARY BUTTONS
    ============================================================ */
 
-.submit-btn {
+.submit-btn,
+.reset-btn {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
-  background: #233645;
-  color: #fff;
   border-radius: 10px;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: 0.25s;
 }
 
+.submit-btn {
+  background: #233645;
+  color: #ffffff;
+}
+
 .submit-btn:hover {
   background: #1a2732;
+}
+
+.reset-btn {
+  background: #e2e8ec;
+  color: #233645;
+}
+
+.reset-btn:hover {
+  background: #d3dde4;
 }
 
 /* ============================================================
@@ -154,7 +175,7 @@ body {
   background: #ffffff;
   padding: 24px 20px;
   border-radius: 16px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .result-card h2 {
@@ -188,40 +209,6 @@ body {
 }
 
 /* ============================================================
-   FOOTER
-   ============================================================ */
-
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding-bottom: 30px;
-  color: #6f7a81;
-  font-size: 0.85rem;
-}
-
-.footer-small {
-  font-size: 0.75rem;
-  margin-top: 8px;
-  color: #738087;
-  line-height: 1.4;
-}
-
-/* ============================================================
-   RESPONSIVENESS
-   ============================================================ */
-
-@media (min-width: 768px) {
-  .app-title {
-    font-size: 2.2rem;
-  }
-  .content {
-    width: 80%;
-  }
-  .result-card {
-    padding: 30px;
-  }
-}
-/* ============================================================
    CTA CARD
    ============================================================ */
 
@@ -232,7 +219,7 @@ body {
   background: #ffffff;
   padding: 22px 18px;
   border-radius: 16px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -254,7 +241,7 @@ body {
   display: inline-block;
   padding: 10px 20px;
   background: #25D366;
-  color: #fff;
+  color: #ffffff;
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
@@ -293,4 +280,42 @@ body {
 
 .share-icon:hover {
   opacity: 1;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 30px;
+  color: #6f7a81;
+  font-size: 0.85rem;
+}
+
+.footer-small {
+  font-size: 0.75rem;
+  margin-top: 8px;
+  color: #738087;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   RESPONSIVENESS
+   ============================================================ */
+
+@media (min-width: 768px) {
+  .app-title {
+    font-size: 2.2rem;
+  }
+
+  .content {
+    width: 80%;
+  }
+
+  .result-card,
+  .cta-card {
+    padding: 30px;
+  }
 }
