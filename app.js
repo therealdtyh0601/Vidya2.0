@@ -24,6 +24,11 @@ function showScreen(id) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+// Ensure the language picker is visible on initial load
+document.addEventListener("DOMContentLoaded", () => {
+  showScreen("language-screen");
+});
+
 /* ===============================
    LANGUAGE SELECTION
 =============================== */
